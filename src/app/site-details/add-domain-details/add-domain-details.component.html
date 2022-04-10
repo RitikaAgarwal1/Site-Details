@@ -1,0 +1,80 @@
+<header>
+    <h3>Add Domain Details</h3>
+    <i class="fa fa-times" aria-hidden="true" (click)="closeStatus.emit(false)"></i>
+</header>
+
+<form>
+    <div class="leftcol">
+        <div>
+            <label>Domain name*</label>
+            <input type="text" name="domain" [(ngModel)]="domain.domain" required>
+        </div>
+        <div class="subdomain-detail" *ngFor="let detail of subdomain; let i = index">
+
+            <div>
+                <label>Subdomain name</label>
+                <input type="text" name="name" [(ngModel)]="detail.name">
+            </div>
+
+            <div>
+                <label>Used Storage</label>
+                <input type="text" name="usedStorage" [(ngModel)]="detail.usedStorage">
+            </div>
+
+            <div>
+                <label>Domain Tag</label>
+                <input type="text" name="domainTag" [(ngModel)]="detail.domainTag">
+            </div>
+
+            <div>
+                <label>Monthly Visitor</label>
+                <input type="number" name="monthlyVisitor" [(ngModel)]="detail.monthlyVisitor">
+            </div>
+
+            <div class="subdomain-status">
+                <label>Status</label>
+                <input type="text" name="status" [(ngModel)]="detail.status">
+                <i class="fa fa-times" aria-hidden="true" (click)="removeField(i)"></i>
+            </div>
+        </div>
+
+        <button (click)="addField()">Add more</button>
+    </div>
+    <div class="rightcol">
+        <div>
+            <label>Used Storage*</label>
+            <input type="text" name="usedStorage" [(ngModel)]="domain.usedStorage">
+        </div>
+
+        <div>
+            <label>Monthly Visitor*</label>
+            <input type="number" name="monthlyVisitor" [(ngModel)]="domain.monthlyVisitor">
+        </div>
+
+        <div>
+            <label>Domain Tag</label>
+            <input type="text" name="domainTag" [(ngModel)]="domain.domainTag">
+        </div>
+
+        <div>
+            <label>Status</label>
+            <input type="text" name="status" [(ngModel)]="domain.status">
+        </div>
+
+        <div>
+            <label>Used Domains</label>
+            <input type="number" name="usedDomains" [(ngModel)]="domain.usedDomains">
+        </div>
+
+        <div>
+            <label>Plan Name</label>
+            <input type="text" name="planName" [(ngModel)]="domain.planName">
+        </div>
+    </div>
+</form>
+
+<footer>
+    <button class="close" (click)="closeStatus.emit(false)">Close</button>
+    <button class="save" (click)="saveData()"
+        [disabled]="!domain.domain || !domain.usedStorage || !domain.monthlyVisitor">Save Changes</button>
+</footer>

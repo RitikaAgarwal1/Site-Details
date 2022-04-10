@@ -1,0 +1,75 @@
+{
+  "domainList": [
+    {
+      "id": 1,
+      "domain": "xyz.com",
+      "storage": "100 gb",
+      "usedStorage": "50 gb",
+      "domainTag": "Primary",
+      "availableDomains": 10,
+      "usedDomains": 4,
+      "monthlyVisitorCapacity": 10000,
+      "planName": "Professional Plan",
+      "monthlyVisitor": 100,
+      "subdomain": [
+        {
+          "id": 11,
+          "name": "abc.xyz.com",
+          "usedStorage": "10 gb",
+          "domainTag": "Staging",
+          "monthlyVisitor": 700,
+          "status": "Active"
+        },
+        {
+          "id": 12,
+          "name": "adef.xyz.com",
+          "usedStorage": "40 gb",
+          "domainTag": "Add On",
+          "monthlyVisitor": 1100
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "domain": "xyz.com",
+      "storage": "100 gb",
+      "usedStorage": "50 gb",
+      "domainTag": "Primary",
+      "subdomain": [],
+      "status": "Inactive",
+      "availableDomains": 10,
+      "usedDomains": 1,
+      "monthlyVisitorCapacity": 10000,
+      "planName": "Professional Plan",
+      "monthlyVisitor": 2000
+    },
+    {
+      "id": 3,
+      "domain": "xyz.com",
+      "storage": "100 gb",
+      "usedStorage": "50 gb",
+      "domainTag": "Primary",
+      "subdomain": [],
+      "status": "Inactive",
+      "availableDomains": 10,
+      "usedDomains": 1,
+      "monthlyVisitorCapacity": 10000,
+      "planName": "Professional Plan",
+      "monthlyVisitor": 2000
+    },
+    {
+      "id": 4,
+      "domain": "xyz.com",
+      "storage": "100 gb",
+      "usedStorage": "50 gb",
+      "domainTag": "Primary",
+      "subdomain": [],
+      "status": "Inactive",
+      "availableDomains": 10,
+      "usedDomains": 1,
+      "monthlyVisitorCapacity": 10000,
+      "planName": "Professional Plan",
+      "monthlyVisitor": 2000
+    }
+  ]
+}

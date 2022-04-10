@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="profile">
+      <img src="/assets/avatar.png" alt="avatar"> 
+    </div>
+
+    <div class="profile-detail">
+        <p>Ritika Agarwal <i class="fa fa-angle-down" aria-hidden="true"></i></p>
+        <small>ritika.agarwal@gmail.com</small> 
+    </div>
+
+    <ul>
+        <li *ngFor="let item of menu" [class.active]="item.isActive">
+            <span><i class="fa {{item.icon}}" aria-hidden="true"></i></span>{{item.title}}
+        </li>
+    </ul>
+</div>

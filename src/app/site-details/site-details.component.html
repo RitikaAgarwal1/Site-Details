@@ -1,0 +1,104 @@
+<div class="container">
+    <app-add-domain-details *ngIf="showModal" (closeStatus)="close($event)" (refreshData)="refresh($event)"></app-add-domain-details>
+    <app-sidepanel></app-sidepanel>
+
+    <div class="site-details">
+        <header>
+            <h1>Site Details</h1>
+            <button (click)="showModal = true"><i class="fa fa-plus" aria-hidden="true"></i>Add New Site</button>
+        </header>
+
+        <div class="actionbar">
+            <p>Show <input type="number" [value]="entryNumber"> Entries</p>
+            <span>
+                <i class="fa fa-search" aria-hidden="true"></i>
+                <input type="search" placeholder="Search records" (ngModelChange)="searchFunc()" [(ngModel)]="searchedKey">
+            </span>
+        </div>
+
+        <div class="table">
+            <header>
+                <span *ngFor="let item of header" (click)="sortFunc(item)">{{item}} <i class="fa fa-sort" aria-hidden="true"></i></span>
+            </header>
+
+            <div class="detail" *ngFor="let item of data">
+                <div class="detail-wrapper">
+                    <div>
+                        <div class="domain">{{item.domain}}</div>
+                        <div *ngIf="item.planName">
+                            <span class="hex">
+                                <div class="circle"><i class="fa fa-check" aria-hidden="true"></i></div>
+                            </span>
+                            <span class="plan">{{item.planName}}</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="progressbar">
+                            <div class="progress">
+                                <div class="progress-value" [ngStyle]="{'width': item.storageWidth}"></div>
+                            </div>
+                        </div>
+                        <div class="storage-detail">{{item.usedStorage | uppercase}} of {{item.storage | uppercase}}
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="progressbar">
+                            <div class="progress">
+                                <div class="progress-value" [ngStyle]="{'width': item.visitorWidth}"></div>
+                            </div>
+                        </div>
+                        <div class="storage-detail">{{item.monthlyVisitor}} of {{item.monthlyVisitorCapacity}}
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="circle-wrap" *ngIf="item.usedDomains">
+                            <div class="inside-circle"> {{item.usedDomains}} / {{item.availableDomains}}</div>
+                            <div class="circle">
+                                <div class="mask half">
+                                    <div class="fill"></div>
+                                </div>
+                                <div class="mask full">
+                                    <div class="fill"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="status">
+                        <button *ngIf="item.status"
+                            [ngClass]="item.status == 'Active' ? 'active' : 'inactive' ">{{item.status}}</button>
+                    </div>
+                </div>
+
+                <div *ngIf="item.subdomain.length > 0" class="subdomain-container">
+                    <div *ngFor="let sub of item.subdomain" class="subdomain">
+                        <div>
+                            {{sub.name}}
+                        </div>
+
+                        <div>
+                            {{sub.usedStorage | uppercase}}
+                            <div class="small-square" [style.background-color]="renderBackgroundColor(sub.domainTag)"></div>
+                        </div>
+
+                        <div>
+                            {{sub.monthlyVisitor}}
+                            <div class="small-square" [style.background-color]="renderBackgroundColor(sub.domainTag)"></div>
+                        </div>
+
+                        <div class="domaintag">
+                            <button [ngClass]="renderClass(sub.domainTag)">{{sub.domainTag}}</button>
+                        </div>
+
+                        <div class="status">
+                            <button *ngIf="sub.status"
+                                [ngClass]="sub.status == 'Active' ? 'active' : 'inactive' ">{{sub.status}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
